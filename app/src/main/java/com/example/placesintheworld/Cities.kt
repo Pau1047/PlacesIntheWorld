@@ -1,6 +1,5 @@
 package com.example.placesintheworld
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -32,6 +31,7 @@ import com.example.placesintheworld.ui.theme.TranBlue
 fun CitiesView(navController: NavController) {
     Cities(navController)
 }
+
 @Composable
 fun getCities():
     List<Data> {
@@ -75,11 +75,12 @@ fun ToolCard(DataItem: Data) {
         colors = TopAppBarDefaults.mediumTopAppBarColors(TranBlue),
     )
 }
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
 fun Cities(navController: NavController) {
     var selectedItem: Data? by remember { mutableStateOf(null) }
     val data = getCities()
+
     Column {
         LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(2),
             content = {

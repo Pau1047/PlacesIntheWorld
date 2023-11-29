@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -67,7 +70,11 @@ class  MainActivity : ComponentActivity() {
                                 arguments = listOf(
                                     navArgument("nomfoto") { type = NavType.StringType } ,
                                     navArgument("foto") { type = NavType.IntType }
-                                )
+                                ), enterTransition = {
+                                    slideIntoContainer(
+                                        towards = AnimatedContentTransitionScope.SlideDirection.Companion.Down,
+                                        animationSpec = tween(800)
+                                    )}, exitTransition = { fadeOut(animationSpec = tween(500))}
                             ) { backStackEntry ->
                                 val nombrefoto = backStackEntry.arguments?.getString("nomfoto") ?: ""
                                 val foto = backStackEntry.arguments?.getInt("foto") ?: ""
