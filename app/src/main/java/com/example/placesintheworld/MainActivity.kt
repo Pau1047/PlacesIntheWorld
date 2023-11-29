@@ -1,6 +1,7 @@
 package com.example.placesintheworld
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,14 +26,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.palette.graphics.Palette
 import com.example.placesintheworld.ui.theme.Blue80
 import com.example.placesintheworld.ui.theme.DarkBlue
 import com.example.placesintheworld.ui.theme.PlacesIntheWorldTheme
@@ -44,6 +48,7 @@ class  MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PlacesIntheWorldTheme {
+
                 val navController = rememberNavController()
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
